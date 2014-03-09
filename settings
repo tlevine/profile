@@ -1,3 +1,4 @@
+# Edit with vim
 export EDITOR=vim
 
 # echo Activating extended globs
@@ -6,3 +7,6 @@ shopt -s extglob
 
 # Locale
 export LC_ALL=en_US.utf8
+
+# Normalize volume
+alias mplayer='mplayer -af-add volnorm'
