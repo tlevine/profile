@@ -1,0 +1,17 @@
+#!/bin/sh
+# Set shell dotfiles.
+(
+  cd
+  # .profile
+  ln -s .prophyl-teh-awesum/profile .profile
+  touch .profile-local
+
+  # History
+  mkdir -p .history
+
+  # bash
+  ln -s .prophyl-teh-awesum/profile .bash_profile 
+  ln -s .prophyl-teh-awesum/profile .bashrc
+  ln -s .prophyl-teh-awesum/login .bash_login
+  ln -s .prophyl-teh-awesum/logout .bash_logout
+)
