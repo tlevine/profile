@@ -1,0 +1,33 @@
+__mkgit() {
+  # Was any argument given?
+  if test -n "$1"; then
+    specified_repository=true
+  else
+    specified_repository=false
+  fi
+
+  # Choose the name.
+  if $specified_repository; then
+    repository="$1"
+  else
+    repository=$(pwd|sed 's/.*\///')
+  fi
+
+  # Make it not end in ".git".
+  if test ${repository##*.} = git; then
+    repository=$(basename "$repository" .git)
+  fi
+  echo "$repository"
+}
+
+privategit() {
+  repository=$(__mkgit "$1")
+
+  # Make the remote.
+  ssh rsync.net "cd git && git init --bare '$repository'"
+
+  # Add the remote
+  if $specified_repository; then
+    git remote add origin "rsync.net:git/$repository"
+  fi
+}
