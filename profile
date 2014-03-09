@@ -13,4 +13,5 @@ if tty -s && [ -z "$profile_has_been_sourced" ]; then
   profile_has_been_sourced=true
 fi
 
-. /home/tlevine/.historian/profile
+. ~/.historian/profile
+. ~/git/secrets-*/profile
