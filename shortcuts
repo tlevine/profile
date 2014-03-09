@@ -1,3 +1,6 @@
-alias g='git'
 alias e='$EDITOR'
 alias feh='feh --fullscreen'
+alias g='git'
+
+alias tmuxl='tmux list-sessions'
+alias tmuxa='tmux attach'
