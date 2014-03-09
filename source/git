@@ -28,23 +28,11 @@ privategit() {
   test 0 -eq $? || return $?
 
   # Make the remote.
-  ssh rsync.net "cd git && git init --bare '$repository'"
+  ssh safe "cd git && git init --bare '$repository'"
 
   # Add the remote
   if $specified_repository; then
-    git remote add origin "rsync.net:git/$repository"
-  fi
-}
-
-privategit() {
-  repository=$(__mkgit "$1")
-
-  # Make the remote.
-  ssh rsync.net "cd git && git init --bare '$repository'"
-
-  # Add the remote
-  if $specified_repository; then
-    git remote add origin "rsync.net:git/$repository"
+    git remote add origin "safe:git/$repository"
   fi
 }
 
