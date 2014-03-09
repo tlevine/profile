@@ -2,8 +2,11 @@ __mkgit() {
   # Was any argument given?
   if test -n "$1"; then
     specified_repository=true
-  else
+  elif test -e .git; then
     specified_repository=false
+  else
+    echo Specify a name or run this from a git repository. >&2
+    return 1
   fi
 
   # Choose the name.
@@ -18,6 +21,19 @@ __mkgit() {
     repository=$(basename "$repository" .git)
   fi
   echo "$repository"
+}
+
+privategit() {
+  repository=$(__mkgit "$1")
+  test 0 -eq $? || return $?
+
+  # Make the remote.
+  ssh rsync.net "cd git && git init --bare '$repository'"
+
+  # Add the remote
+  if $specified_repository; then
+    git remote add origin "rsync.net:git/$repository"
+  fi
 }
 
 privategit() {
