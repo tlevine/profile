@@ -24,11 +24,10 @@ __mkgit() {
 }
 
 privategit() {
-  repository=$(__mkgit "$1")
-  test 0 -eq $? || return $?
+  repository=$(__mkgit "$1") || return 1
 
   # Make the remote.
-  ssh safe "cd git && git init --bare '$repository'"
+  ssh safe "git init --bare 'git/$repository'"
 
   # Add the remote
   if $specified_repository; then
