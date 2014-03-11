@@ -39,12 +39,12 @@ publicgit() {
   repository=$(__mkgit "$1")
 
   # Make the remote.
-  ssh git.thomaslevine.com "cd git.thomaslevine.com && mkdir "$repository" && cd "$repository" && git init && cd .git && rm -R hooks && ln -s ~/hooks ."
-  git remote set-url --add origin "git.thomaslevine.com:git.thomaslevine.com/$repository/.git"
+  ssh mountaingit "cd git.thomaslevine.com && mkdir "$repository" && cd "$repository" && git init && cd .git && rm -R hooks && ln -s ~/hooks ."
+  git remote set-url --add origin "mountaingit:git.thomaslevine.com/$repository/.git"
 
   # GitHub too
   if which hub > /dev/null; then
     hub create "tlevine/$repository"
   fi
-  git remote set-url --add origin "git@github.com:tlevine/$repository"
+  git remote set-url --add origin "github:tlevine/$repository"
 }
