@@ -1,4 +1,7 @@
 web() {
-  url=$(git remote show origin|sed -n 's/ Fetch URL: //p')
-  echo $url
+  giturl=$(git remote show -n origin|sed -n 's/ Fetch URL: //p')
+  if echo "$giturl" | grep github > /dev/null; then
+    weburl=https://github.com/$(echo "$giturl"|sed 's/.*://')
+  fi
+  echo $weburl
 }
