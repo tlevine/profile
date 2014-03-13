@@ -1,0 +1,4 @@
+web() {
+  url=$(git remote show origin|sed -n 's/ Fetch URL: //p')
+  echo $url
+}
