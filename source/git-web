@@ -5,7 +5,7 @@ web() {
     weburl="$weburl_base"/blob/$(git branch|sed -n 's/^* //p')
   elif echo "$giturl" | grep nsa:git.thomaslevine.com > /dev/null; then
     weburl=http://git.thomaslevine.com/$(echo "$giturl"| sed 's/.*nsa:git.thomaslevine.com\///')
-  elif echo "$giturl" | grep wiki-thomas-levine.com > /dev/null; then
+  elif echo "$giturl" | grep wiki-thomaslevine.com > /dev/null; then
     weburl=http://wiki.thomaslevine.com
   else
     echo "I couldn't determine the web URL, but these are the git urls."
