@@ -1,15 +1,16 @@
 web() {
   giturl=$(git remote show -n origin|sed -n 's/ Fetch URL: //p')
   if echo "$giturl" | grep github > /dev/null; then
-    weburl=https://github.com/$(echo "$giturl"|sed 's/.*://')
+    weburl=https://github.com/$(echo "$giturl"|sed -e 's/.*://' -e 's/\.git$//')
   elif echo "$giturl" | grep nsa:git.thomaslevine.com > /dev/null; then
     weburl=http://git.thomaslevine.com/$(echo "$giturl"| sed 's/.*nsa:git.thomaslevine.com\///')
-  elif echo "$giturl" | grep brancable > /dev/null; then
+  elif echo "$giturl" | grep wiki-thomas-levine.com > /dev/null; then
     weburl=http://wiki.thomaslevine.com
   else
     echo "I couldn't determine the web URL, but these are the git urls."
     git remote show -n origin | grep URL
     return 1
   fi
-  echo $weburl
+  path=$(echo "$PWD"|sed s+/home/tlevine/git/[^/]*++)
+  echo "${weburl}${path}/"
 }
