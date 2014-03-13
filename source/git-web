@@ -1,7 +1,8 @@
 web() {
   giturl=$(git remote show -n origin|sed -n 's/ Fetch URL: //p')
   if echo "$giturl" | grep github > /dev/null; then
-    weburl=https://github.com/$(echo "$giturl"|sed -e 's/.*://' -e 's/\.git$//')
+    weburl_base=https://github.com/$(echo "$giturl"|sed -e 's/.*://' -e 's/\.git$//')
+    weburl="$weburl_base"/blob/$(git branch|sed -n 's/^* //p')
   elif echo "$giturl" | grep nsa:git.thomaslevine.com > /dev/null; then
     weburl=http://git.thomaslevine.com/$(echo "$giturl"| sed 's/.*nsa:git.thomaslevine.com\///')
   elif echo "$giturl" | grep wiki-thomas-levine.com > /dev/null; then
