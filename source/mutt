@@ -1,9 +1,12 @@
 mutt() {
   if echo "$*" | grep -- -R > /dev/null; then
-    mutt "$@"
+    echo Running with read-only power
+    command mutt "$@"
   elif pgrep mutt > /dev/null; then
-    mutt -R "$@"
+    echo Running with read-only power
+    command mutt -R "$@"
   else
-    mutt "$@"
+    echo Running with read-write power
+    command mutt
   fi
 }
