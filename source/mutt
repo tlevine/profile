@@ -1,0 +1,9 @@
+mutt() {
+  if echo "$*" | grep -- -R > /dev/null; then
+    mutt "$@"
+  elif pgrep mutt > /dev/null; then
+    mutt -R "$@"
+  else
+    mutt "$@"
+  fi
+}
