@@ -13,7 +13,7 @@ if tty -s && [ -z "$profile_has_been_sourced" ]; then
   profile_has_been_sourced=true
 fi
 
-. ~/.historian/profile
+. ~/git/historian/historian/profile
 . ~/git/secrets-*/profile
 
 # Enter a tmux if we're not in a tmux
