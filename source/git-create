@@ -39,8 +39,8 @@ publicgit() {
   repository=$(__mkgit "$1")
 
   # Make the remote.
-  ssh nsa "cd dadawarehouse.thomaslevine.com/small && mkdir '$repository' && cd '$repository' && git init && cd .git && rm -R hooks && ln -s ~/hooks ."
-  git remote set-url --add origin "nsa:dadawarehouse.thomaslevine.com/$repository/.git"
+  ssh nsa "cd dadawarehouse.thomaslevine.com/small && mkdir '$repository' && cd '$repository' && git init && git config --add receive.denyCurrentBranch ignore && cd .git && rm -R hooks && ln -s ~/hooks ."
+  git remote set-url --add origin "nsa:dadawarehouse.thomaslevine.com/small/$repository/.git"
 
   # GitHub too
   if which hub > /dev/null; then
