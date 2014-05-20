@@ -38,13 +38,12 @@ privategit() {
 publicgit() {
   repository=$(__mkgit "$1")
 
-  # Make the remote.
-  ssh nsa "cd dadawarehouse.thomaslevine.com/small && mkdir '$repository' && cd '$repository' && git init && git config --add receive.denyCurrentBranch ignore && cd .git && rm -R hooks && ln -s ~/hooks ."
-  git remote set-url --add origin "nsa:dadawarehouse.thomaslevine.com/small/$repository/.git"
-
-  # GitHub too
+  # GitHub 
   if which hub > /dev/null; then
     hub create "tlevine/$repository"
   fi
-# git remote set-url --add origin "github:tlevine/$repository"
+
+  # NSA
+  ssh nsa "cd dadawarehouse.thomaslevine.com/small && mkdir '$repository' && cd '$repository' && git init && git config --add receive.denyCurrentBranch ignore && cd .git && rm -R hooks && ln -s ~/hooks ."
+  git remote set-url --add origin "nsa:dadawarehouse.thomaslevine.com/small/$repository/.git"
 }
