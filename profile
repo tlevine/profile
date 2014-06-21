@@ -17,6 +17,6 @@ fi
 . ~/git/secrets-*/profile
 
 # Try attaching a tmux if we're in SSH
-if test -z "$TMUX" && ( "$SSH_CLIENT" || test -n "$SSH_TTY" ); then
+if test -z "$TMUX" && ( test -n "$SSH_CLIENT" || test -n "$SSH_TTY" ); then
   tmux attach
 fi
