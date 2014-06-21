@@ -16,7 +16,7 @@ fi
 . ~/git/historian/historian/profile
 . ~/git/secrets-*/profile
 
-# Try attaching a tmux
-if test -z "$TMUX"; then
+# Try attaching a tmux if we're in SSH
+if test -z "$TMUX" && ( "$SSH_CLIENT" || test -n "$SSH_TTY" ); then
   tmux attach
 fi
