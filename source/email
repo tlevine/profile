@@ -4,5 +4,8 @@ address() {
   
   # Search my emails.
   notmuch show to:"$name"|grep "$name"|grep -m1 @|cut -d: -f2|
-    tr , '\n'|grep "$name"| sed 's/^ *//'
+    tr , '\n'|sed -n "/$name/ s/^ *\([^<]*\)/\L\1\n/p" |
+    sed -e '1 s/ *$//' -e '1 s/ /./' -e '1 s/^ */alias /' |
+    tr '\n' ' '
+  echo
 }
