@@ -44,6 +44,6 @@ publicgit() {
   fi
 
   # NSA
-  ssh nsa "cd dadawarehouse.thomaslevine.com/small && mkdir '$repository' && cd '$repository' && git init && git config --add receive.denyCurrentBranch ignore && cd .git && rm -R hooks && ln -s ~/hooks ."
-  git remote set-url --add origin "nsa:dadawarehouse.thomaslevine.com/small/$repository/.git"
+  ssh nsa "cd /lockers/tlevine_vol/jail/small.dada.pink && mkdir '$repository' && cd '$repository' && git init && git config --add receive.denyCurrentBranch ignore && cd .git && rm -R hooks && ln -s ~/hooks ."
+  git remote set-url --add origin "nsa:/lockers/tlevine_vol/jail/small.dada.pink/$repository/.git"
 }
