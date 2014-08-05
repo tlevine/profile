@@ -1,5 +1,5 @@
 alias e='$EDITOR'
-alias feh='feh --fullscreen --auto-zoom'
+alias feh='feh --fullscreen --auto-zoom --draw-filename'
 alias g='git'
 
 alias tmuxl='tmux list-sessions'
