@@ -1,3 +1,12 @@
 alias aoeu='setxkbmap us'
 alias asdf='setxkbmap us -variant dvorak'
+
+alias es='setxkbmap es -variant dvorak'
 alias fr='setxkbmap fr -variant dvorak'
+alias se='setxkbmap se -variant dvorak'
+alias us='setxkbmap us -variant dvorak'
+
+
+# Ideas
+# -layout us,se
+# -option grp:alt_shift_toggle
