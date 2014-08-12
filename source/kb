@@ -6,7 +6,9 @@ alias fr='setxkbmap fr -variant dvorak'
 alias se='setxkbmap se -variant dvorak'
 alias us='setxkbmap us -variant dvorak'
 
+alias printkb='xkbprint :0 /tmp/keyboard-layout.ps && convert -rotate 270 /tmp/keyboard-layout.{ps,jpg} && feh /tmp/keyboard-layout.jpg'
 
-# Ideas
+# Ideas (https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg#Using_setxkbmap)
 # -layout us,se
 # -option grp:alt_shift_toggle
+# -option compose:ralt
