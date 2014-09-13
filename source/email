@@ -3,7 +3,7 @@ address() {
   name="$1"
   
   # Search my emails.
-  notmuch show from:"$name" or to:"$name"|grep -vi '\(twitter\|tweet\)' | grep "$name"|grep -m1 '[^ ]@'|cut -d: -f2|
+  notmuch show from:"$name" or to:"$name"|grep -vi '\(twitter\|tweet\|linkedin\)' | grep "$name"|grep -m1 '[^ ]@'|cut -d: -f2|
     sed 's/>.*$/>/' |
     tr , '\n'|sed -n "/$name/ s/^ *\([^<]*\)/\1\n\1/p" |
     sed '1 s/ *$//' | sed '1 s/ /./g' | sed '1 s/\(.*\)/alias \L\1/' |

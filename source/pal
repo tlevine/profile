@@ -2,15 +2,15 @@ pal() {
   if command pal "$@"; then
     (
       cd ~/.pal/p
-      if git status --porcelain | grep '^ M schedule/' > /dev/null; then
-        git commit *.txt -m 'edited a calendar with pal' > /dev/null
+      if git status --porcelain | grep '^ M .*\.pal' > /dev/null; then
+        git commit *.pal -m 'edited a calendar with pal' > /dev/null
         git push > /dev/null
       fi
     )
     (
       cd ~/.pal/secrets-nsa
-      if git status --porcelain | grep '^ M secret-calendar.txt' > /dev/null; then
-        git commit secret-calendar.txt -m 'edited the calendar with pal' > /dev/null
+      if git status --porcelain | grep '^ M secret-calendar.pal' > /dev/null; then
+        git commit secret-calendar.pal -m 'edited the calendar with pal' > /dev/null
         git push > /dev/null
       fi
     )
