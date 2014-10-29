@@ -1,5 +1,7 @@
 __US='setxkbmap us -variant dvorak'
 
+setxkbmap -option compose:lwin
+
 alias aoeu='setxkbmap us'
 alias asdf="$__US"
 
