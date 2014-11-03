@@ -10,3 +10,5 @@ address() {
     tr '\n' ' '
   echo
 }
+
+alias killofflineimap='kill -9 $(pgrep offlineimap)'
