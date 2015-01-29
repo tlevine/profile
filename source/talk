@@ -1,4 +1,4 @@
-SAY_COMMANDS=true
+SAY_COMMANDS=false # Switch to true to enable this.
 big_prev_command=
 _say_command() {
   # I can't find a variable for !!.
