@@ -3,7 +3,9 @@ _say_command() {
   # I can't find a variable for !!.
   # https://www.gnu.org/software/bash/manual/bashref.html#Double-Quotes
   if $SAY_COMMANDS && test -z "$prev_command"; then
-    command history|tail -n1|sed 's/[^]]*]//' | festival --tts
+    command history|tail -n1|sed 's/[^]]*]//' | festival --tts &
   fi
+  # test "$prev_command" != "$big_prev_command"
+  # export big_prev_command="$prev_command"
 }
 PROMPT_COMMAND="$PROMPT_COMMAND${PROMPT_COMMAND:+;}_say_command"
