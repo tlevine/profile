@@ -1,11 +1,14 @@
 SAY_COMMANDS=true
+big_prev_command=
 _say_command() {
   # I can't find a variable for !!.
   # https://www.gnu.org/software/bash/manual/bashref.html#Double-Quotes
-  if $SAY_COMMANDS && test -z "$prev_command"; then
-    command history|tail -n1|sed 's/[^]]*]//' | festival --tts &
+  prev_command=$(command history|sed -n '$ s/[^]]*]//p')
+  if $SAY_COMMANDS && test -n "$prev_command" &&
+    test "$big_prev_command" != "$prev_command"; then
+  # echo "-> $prev_command,$big_prev_command"
+    echo "$prev_command" | festival --tts
+    big_prev_command="$prev_command"
   fi
-  # test "$prev_command" != "$big_prev_command"
-  # export big_prev_command="$prev_command"
 }
 PROMPT_COMMAND="$PROMPT_COMMAND${PROMPT_COMMAND:+;}_say_command"
