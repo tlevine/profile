@@ -6,7 +6,6 @@ _say_command() {
   prev_command=$(command history|sed -n '$ s/[^]]*]//p')
   if $SAY_COMMANDS && test -n "$prev_command" &&
     test "$big_prev_command" != "$prev_command"; then
-  # echo "-> $prev_command,$big_prev_command"
     echo "$prev_command" | festival --tts
     big_prev_command="$prev_command"
   fi
