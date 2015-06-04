@@ -1,0 +1,1 @@
+alias j='git commit . -m j'
