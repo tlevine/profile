@@ -11,4 +11,4 @@ address() {
   echo
 }
 
-alias killofflineimap='kill -9 $(pgrep offlineimap)'
+alias killofflineimap='pgrep offlineimap > /dev/null && kill -9 $(pgrep offlineimap)'
