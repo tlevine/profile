@@ -4,3 +4,6 @@ alias g='git'
 
 alias tmuxl='tmux list-sessions'
 alias tmuxa='tmux attach'
+
+# http://www.unix.com/shell-programming-and-scripting/42663-generate-random-password.html
+alias password='cat /dev/urandom|tr -dc "a-zA-Z0-9-_\$\?"|head -c32 && echo'
