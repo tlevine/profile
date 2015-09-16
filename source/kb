@@ -1,25 +1,27 @@
 __US='setxkbmap us -variant dvorak'
 
-setxkbmap -option compose:lwin
-
-alias aoeu='setxkbmap us'
-alias asdf="$__US"
-
-alias us='setxkbmap us -variant dvorak'
-alias es='setxkbmap es -variant dvorak'
-alias se='setxkbmap se -variant dvorak'
-
-alias fr='setxkbmap fr -variant dvorak'
-alias oaue="$__US"
-
-alias de='setxkbmap de -variant dvorak'
-alias aoei="$__US"
-
-unset __US
-
-alias printkb='xkbprint :0 /tmp/keyboard-layout.ps && convert -rotate 270 /tmp/keyboard-layout.{ps,jpg} && feh /tmp/keyboard-layout.jpg'
-
-# Ideas (https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg#Using_setxkbmap)
-# -layout us,se
-# -option grp:alt_shift_toggle
-# -option compose:ralt
+if which setxkbmap > /dev/null && test $(uname) != Darwin; then
+  setxkbmap -option compose:lwin
+  
+  alias aoeu='setxkbmap us'
+  alias asdf="$__US"
+  
+  alias us='setxkbmap us -variant dvorak'
+  alias es='setxkbmap es -variant dvorak'
+  alias se='setxkbmap se -variant dvorak'
+  
+  alias fr='setxkbmap fr -variant dvorak'
+  alias oaue="$__US"
+  
+  alias de='setxkbmap de -variant dvorak'
+  alias aoei="$__US"
+  
+  unset __US
+  
+  alias printkb='xkbprint :0 /tmp/keyboard-layout.ps && convert -rotate 270 /tmp/keyboard-layout.{ps,jpg} && feh /tmp/keyboard-layout.jpg'
+  
+  # Ideas (https://wiki.archlinux.org/index.php/Keyboard_configuration_in_Xorg#Using_setxkbmap)
+  # -layout us,se
+  # -option grp:alt_shift_toggle
+  # -option compose:ralt
+fi
